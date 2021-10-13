@@ -102,7 +102,16 @@ function OOB() {
         let curWin = windows[i];
 
         // Width and height of whole window
+
+        // Only works on desktop
         let winWidth = String(window.innerWidth);
+
+        // Works For Mobile
+        let rCorner = document.body.querySelector(".right-corner");
+        var rect = rCorner.getBoundingClientRect();
+        console.log(rect.right);
+        winWidth = rect.right;
+
         let winHeight = String(window.innerHeight);
 
         // X and Width
@@ -150,3 +159,6 @@ OOB();
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     makeWindow(6, 200, 300, 500);
 }
+let rCorner = document.body.querySelector(".right-corner");
+var rect = rCorner.getBoundingClientRect();
+console.log(rect.right);
