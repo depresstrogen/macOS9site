@@ -5,50 +5,112 @@ let cornerRect = rCorner.getBoundingClientRect();
 globalWidth = cornerRect.left;
 
 function dragElement(elmnt) {
-    var pos1 = 0,
-        pos2 = 0,
-        pos3 = 0,
-        pos4 = 0;
-    if (elmnt.querySelector(".windowheader")) {
-        // if present, the header is where you move the DIV from:
-        elmnt.querySelector(".windowheader").onmousedown = dragMouseDown;
-    } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
-        elmnt.onmousedown = dragMouseDown;
+    let titleBar = elmnt.querySelector(".windowheader");
+    var active = false;
+    var currentX;
+    var currentY;
+    var initialX;
+    var initialY;
+    var xOffset = 0;
+    var yOffset = 0;
+
+    let xChange = 0;
+    let yChange = 0;
+
+    titleBar.addEventListener("touchstart", dragStart, false);
+    titleBar.addEventListener("touchend", dragEnd, false);
+    titleBar.addEventListener("touchmove", drag, false);
+
+    titleBar.addEventListener("mousedown", dragStart, false);
+    titleBar.addEventListener("mouseup", dragEnd, false);
+    titleBar.addEventListener("mousemove", drag, false);
+
+    function dragStart(e) {
+        if (e.type === "touchstart") {
+            initialX = e.touches[0].clientX - xOffset;
+            initialY = e.touches[0].clientY - yOffset;
+        } else {
+            initialX = e.clientX - xOffset;
+            initialY = e.clientY - yOffset;
+        }
+
+        if (e.target === titleBar) {
+            active = true;
+            let winX = String(elmnt.style.left);
+            let winY = String(elmnt.style.top);
+            winX = Number(winX.substring(0, winX.length - 2));
+            winY = Number(winY.substring(0, winY.length - 2));
+            let xOff = initialX - winX;
+            let yOff = initialY - winY;
+
+            console.log(e.clientX + " " + xOff + " " + (e.clientX - xOff));
+            console.log(e.clientY + " " + yOff);
+
+        }
     }
 
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
+    function dragEnd(e) {
+        active = false;
+        let winX = String(elmnt.style.left);
+        let winY = String(elmnt.style.top);
 
-        elmnt.remove();
-        document.body.appendChild(elmnt);
+        winX = Number(winX.substring(0, winX.length - 2));
+        winY = Number(winY.substring(0, winY.length - 2));
+
+        winX += xChange;
+        winY += yChange;
+
+        elmnt.style.left = winX + "px";
+        elmnt.style.top = winY + "px";
+
+        console.log(winX + "px");
+        elmnt.style.transform = "translate3d(" + 0 + "px, " + 0 + "px, 0)";
+
+        xChange = 0;
+        yChange = 0;
+
+        xOffset = 0;
+        yOffset = 0;
+
     }
 
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // set the element's new position:
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        OOB();
+    function drag(e) {
+        if (active) {
+
+            e.preventDefault();
+
+            if (e.type === "touchmove") {
+                currentX = e.touches[0].clientX - initialX;
+                currentY = e.touches[0].clientY - initialY;
+            } else {
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+            }
+            let winX = String(elmnt.style.left);
+            let winY = String(elmnt.style.top);
+
+            winX = Number(winX.substring(0, winX.length - 2));
+            winY = Number(winY.substring(0, winY.length - 2));
+            let xOff = e.clientX - winX;
+            let yOff = e.clientY - winY;
+            // console.log(e.clientX + " " + xOff + " " + (e.clientX - xOff));
+            // console.log(e.clientY + " " + yOff);
+
+            xOffset = currentX;
+            yOffset = currentY;
+
+            xChange = xOff - initialX + winX;
+            yChange = yOff - initialY + winY;
+
+            console.log(e.clientX - winX);
+            console.log(xChange + "," + yChange);
+            console.log("a" + currentX + " " + currentY)
+            setTranslate(xChange, yChange, elmnt);
+        }
     }
 
-    function closeDragElement() {
-        // stop moving when mouse button is released:
-        document.onmouseup = null;
-        document.onmousemove = null;
+    function setTranslate(xPos, yPos, el) {
+        el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
     }
 }
 
@@ -181,5 +243,5 @@ OOB();
 
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-
+    //mobile
 }
