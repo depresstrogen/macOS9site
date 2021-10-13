@@ -35,6 +35,8 @@ function dragElement(elmnt) {
         }
 
         if (e.target === titleBar) {
+            elmnt.remove();
+            document.body.appendChild(elmnt);
             active = true;
             let winX = String(elmnt.style.left);
             let winY = String(elmnt.style.top);
@@ -185,7 +187,7 @@ function lobster() {
     lobsterWindow.appendChild(lob);
 }
 
-function OOB() {
+async function OOB() {
     for (let i = 0; i < windows.length; i++) {
         // Get Current Window
         let curWin = windows[i];
@@ -240,9 +242,6 @@ function OOB() {
         console.log(" ss " + curWinWidth + curWinX);
         if (curWinWidth + curWinX > winWidth) {
             curWin.style.left = (window.innerWidth - curWinWidth) + "px";
-        } else if (curWinWidth + curWinX + transX > winWidth) {
-            transX = (window.innerWidth - curWinWidth - curWinX)
-            curWin.style.transform = "translate3d(" + transX + "px, " + transY + "px, 0)";
         }
 
         if (curWinX < 0) {
@@ -273,7 +272,12 @@ penith();
 lobster();
 OOB();
 
+setInterval(function() {
+    OOB();
+}, 100);
 
+
+oobCheck();
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     //mobile
 }
