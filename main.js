@@ -1,11 +1,13 @@
 // Make the DIV element draggable:
 dragElement(document.querySelector(".window"));
 
+let windows = [];
+
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.querySelector(".windowheader")) {
+    if (elmnt.querySelector(".windowheader")) {
         // if present, the header is where you move the DIV from:
-        document.querySelector(".windowheader").onmousedown = dragMouseDown;
+        elmnt.querySelector(".windowheader").onmousedown = dragMouseDown;
     } else {
         // otherwise, move the DIV from anywhere inside the DIV:
         elmnt.onmousedown = dragMouseDown;
@@ -41,3 +43,30 @@ function dragElement(elmnt) {
         document.onmousemove = null;
     }
 }
+
+function makeWindow(height, width) {
+    let windowDiv = document.createElement("div");
+    windowDiv.className = "window";
+    windowDiv.id = windows.length;
+    windowDiv.style.height = height + "px";
+    windowDiv.style.width = width + "px";
+
+    let windowTitle = document.createElement("div");
+    windowTitle.className = "windowheader";
+    windowDiv.appendChild(windowTitle);
+    let closeButton = document.createElement("img");
+    closeButton.className = "closeButton";
+    closeButton.src = "close.png";
+    windowTitle.appendChild(closeButton);
+
+    let minButton = document.createElement("img");
+    minButton.className = "minButton";
+    minButton.src = "minimize.png";
+    windowTitle.appendChild(minButton);
+
+    dragElement(windowDiv);
+    document.body.appendChild(windowDiv);
+
+}
+
+makeWindow(300, 500);
