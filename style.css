@@ -16,6 +16,12 @@ body {
     background-repeat: repeat;
 }
 
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .window {
     position: absolute;
     height: 250px;
