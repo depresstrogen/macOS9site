@@ -237,20 +237,23 @@ function OOB() {
         }
 
 
-        console.log(" ss " + curWinWidth + curWinX + transX);
-        if (curWinWidth + curWinX + transX > winWidth) {
-            curWin.style.left = (window.innerWidth - curWinWidth - transX) + "px";
+        console.log(" ss " + curWinWidth + curWinX);
+        if (curWinWidth + curWinX > winWidth) {
+            curWin.style.left = (window.innerWidth - curWinWidth) + "px";
+        } else if (curWinWidth + curWinX + transX > winWidth) {
+            transX = (window.innerWidth - curWinWidth - curWinX)
+            curWin.style.transform = "translate3d(" + transX + "px, " + transY + "px, 0)";
         }
 
-        if (curWinX + transX < 0) {
+        if (curWinX < 0) {
             curWin.style.left = 0 + "px";
         }
 
-        if (curWinHeight + curWinY + transY > winHeight) {
-            curWin.style.top = (window.innerHeight - curWinHeight - transY) + "px";
+        if (curWinHeight + curWinY > winHeight) {
+            curWin.style.top = (window.innerHeight - curWinHeight) + "px";
         }
 
-        if (curWinY + transY < 22) {
+        if (curWinY < 22) {
             curWin.style.top = 22 + "px";
         }
 
