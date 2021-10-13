@@ -21,6 +21,7 @@ body {
     height: 250px;
     width: 400px;
     top: 100px;
+    overflow: hidden;
     background-color: white;
 }
 
