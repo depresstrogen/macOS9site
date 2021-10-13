@@ -1,9 +1,10 @@
-
-
 let windows = [];
 
 function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    var pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0;
     if (elmnt.querySelector(".windowheader")) {
         // if present, the header is where you move the DIV from:
         elmnt.querySelector(".windowheader").onmousedown = dragMouseDown;
@@ -37,6 +38,7 @@ function dragElement(elmnt) {
         // set the element's new position:
         elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
         elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        OOB();
     }
 
     function closeDragElement() {
@@ -76,7 +78,7 @@ function makeWindow(x, y, height, width) {
 }
 
 function penith() {
-    let penithWindow = makeWindow(400,400,250, 400);
+    let penithWindow = makeWindow(400, 400, 250, 400);
     let penithHeader = penithWindow.querySelector(".windowheight")
     let frame = document.createElement("iframe");
     frame.src = "dummywebsite.html";
@@ -87,14 +89,59 @@ function penith() {
 }
 
 function lobster() {
-    let lobsterWindow = makeWindow(10,10,342, 320);
+    let lobsterWindow = makeWindow(10, 30, 342, 320);
 
     let lob = document.createElement("img");
     lob.src = "lobster.gif";
     lobsterWindow.appendChild(lob);
 }
 
-makeWindow(600,200,300, 500);
+function OOB() {
+    for (let i = 0; i < windows.length; i++) {
+        // Get Current Window
+        let curWin = windows[i];
+
+        // Width and height of whole window
+        let winWidth = String(window.innerWidth);
+        let winHeight = String(window.innerHeight);
+
+        // X and Width
+        let curWinX = String(curWin.style.left);
+        curWinX = Number(curWinX.substring(0, curWinX.length - 2));
+        let curWinWidth = String(curWin.style.width);
+        curWinWidth = Number(curWinWidth.substring(0, curWinWidth.length - 2));
+
+        // Y and Height
+        let curWinY = String(curWin.style.top);
+        curWinY = Number(curWinY.substring(0, curWinY.length - 2));
+        let curWinHeight = String(curWin.style.height);
+        curWinHeight = Number(curWinHeight.substring(0, curWinHeight.length - 2));
+
+
+        if (curWinWidth + curWinX > winWidth) {
+            curWin.style.left = (window.innerWidth - curWinWidth) + "px";
+        }
+
+        if (curWinX < 0) {
+            curWin.style.left = 0 + "px";
+        }
+
+        if (curWinHeight + curWinY > winHeight) {
+            curWin.style.top = (window.innerHeight - curWinHeight) + "px";
+        }
+
+        if (curWinY < 22) {
+            curWin.style.top = 22 + "px";
+        }
+
+        console.log(window.innerWidth);
+        console.log(curWinWidth + curWinX)
+        console.log();
+    }
+}
+
+makeWindow(600, 200, 300, 500);
 
 penith();
 lobster();
+OOB();
