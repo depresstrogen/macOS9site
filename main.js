@@ -109,9 +109,10 @@ function OOB() {
         // Works For Mobile
         let rCorner = document.body.querySelector(".right-corner");
         var rect = rCorner.getBoundingClientRect();
-        console.log(rect.right);
-        winWidth = rect.right;
 
+        winWidth = String(rect.right);
+        let time = new Date();
+        console.log(winWidth + time.getTime());
         let winHeight = String(window.innerHeight);
 
         // X and Width
@@ -148,6 +149,10 @@ function OOB() {
         console.log();
     }
 }
+
+window.addEventListener('resize', function(event) {
+    OOB();
+}, true);
 
 makeWindow(600, 200, 300, 500);
 
