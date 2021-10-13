@@ -57,6 +57,10 @@ function makeWindow(x, y, height, width) {
     globalWidth = winWidth;
     if (globalWidth < width + x) {
         x = 0;
+        if (globalWidth < width + x) {
+            width = globalWidth - 5;
+
+        }
     }
 
     let windowDiv = document.createElement("div");
