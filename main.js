@@ -116,6 +116,7 @@ function dragElement(elmnt) {
             // console.log("a" + currentX + " " + currentY)
             setTranslate(xChange, yChange, elmnt);
         }
+        OOB();
     }
 
     function setTranslate(xPos, yPos, el) {
@@ -202,7 +203,7 @@ function OOB() {
         winWidth = String(rect.left + 9);
         globalWidth = winWidth;
         let time = new Date();
-        console.log(winWidth + time.getTime());
+        // console.log(winWidth + time.getTime());
         let winHeight = String(window.innerHeight);
 
         // X and Width
@@ -211,32 +212,51 @@ function OOB() {
         let curWinWidth = String(curWin.style.width);
         curWinWidth = Number(curWinWidth.substring(0, curWinWidth.length - 2));
 
+
+
         // Y and Height
         let curWinY = String(curWin.style.top);
         curWinY = Number(curWinY.substring(0, curWinY.length - 2));
         let curWinHeight = String(curWin.style.height);
         curWinHeight = Number(curWinHeight.substring(0, curWinHeight.length - 2));
 
-
-        if (curWinWidth + curWinX > winWidth) {
-            curWin.style.left = (window.innerWidth - curWinWidth) + "px";
+        //Transform so it works when moving
+        let transX = 0;
+        let transY = 0;
+        let digitRegex = /(\d|\-)+/g;
+        if (curWin.style.transform == "") {
+            // no translate, skip
+        } else {
+            transText = String(curWin.style.transform);
+            transText = String(transText.match(digitRegex));
+            transText = transText.slice(2);
+            transText = transText.split(/,/)
+            transX = Number(transText[0]);
+            transY = Number(transText[1]);
+            console.log(transX + " " + transY);
         }
 
-        if (curWinX < 0) {
+
+        console.log(" ss " + curWinWidth + curWinX + transX);
+        if (curWinWidth + curWinX + transX > winWidth) {
+            curWin.style.left = (window.innerWidth - curWinWidth - transX) + "px";
+        }
+
+        if (curWinX + transX < 0) {
             curWin.style.left = 0 + "px";
         }
 
-        if (curWinHeight + curWinY > winHeight) {
-            curWin.style.top = (window.innerHeight - curWinHeight) + "px";
+        if (curWinHeight + curWinY + transY > winHeight) {
+            curWin.style.top = (window.innerHeight - curWinHeight - transY) + "px";
         }
 
-        if (curWinY < 22) {
+        if (curWinY + transY < 22) {
             curWin.style.top = 22 + "px";
         }
 
-        console.log(window.innerWidth);
-        console.log(curWinWidth + curWinX)
-        console.log();
+        // console.log(window.innerWidth);
+        // console.log(curWinWidth + curWinX)
+        // console.log();
     }
 }
 
