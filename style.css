@@ -67,3 +67,22 @@ body {
     top: 4px;
     right: 4px;
 }
+
+.titlebar {
+    display: inline;
+    height: 20px;
+    background-color: rgb(221, 221, 221);
+    display: block;
+}
+
+.left-corner {
+    display: inline;
+}
+
+.right-corner {
+    display: inline;
+    position: relative;
+    float: right;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
