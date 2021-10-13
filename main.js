@@ -1,5 +1,8 @@
 let windows = [];
 let globalWidth = 0;
+let rCorner = document.body.querySelector(".right-corner");
+let cornerRect = rCorner.getBoundingClientRect();
+globalWidth = cornerRect.left;
 
 function dragElement(elmnt) {
     var pos1 = 0,
@@ -170,7 +173,7 @@ window.addEventListener('resize', function(event) {
     OOB();
 }, true);
 
-makeWindow(600, 200, 300, 500);
+makeWindow(5, 200, 300, globalWidth - 10);
 
 penith();
 lobster();
@@ -178,5 +181,5 @@ OOB();
 
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    makeWindow(6, 200, 300, 500);
+
 }
