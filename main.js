@@ -43,8 +43,8 @@ function dragElement(elmnt) {
             let xOff = initialX - winX;
             let yOff = initialY - winY;
 
-            console.log(e.clientX + " " + xOff + " " + (e.clientX - xOff));
-            console.log(e.clientY + " " + yOff);
+            // console.log(e.clientX + " " + xOff + " " + (e.clientX - xOff));
+            // console.log(e.clientY + " " + yOff);
 
         }
     }
@@ -91,8 +91,17 @@ function dragElement(elmnt) {
 
             winX = Number(winX.substring(0, winX.length - 2));
             winY = Number(winY.substring(0, winY.length - 2));
-            let xOff = e.clientX - winX;
-            let yOff = e.clientY - winY;
+            let xOff = 0;
+            let yOff = 0;
+            if (e.type === "touchmove") {
+                xOff = e.touches[0].clientX - winX;
+                yOff = e.touches[0].clientY - winY;
+
+            } else {
+                xOff = e.clientX - winX;
+                yOff = e.clientY - winY;
+            }
+
             // console.log(e.clientX + " " + xOff + " " + (e.clientX - xOff));
             // console.log(e.clientY + " " + yOff);
 
@@ -102,9 +111,9 @@ function dragElement(elmnt) {
             xChange = xOff - initialX + winX;
             yChange = yOff - initialY + winY;
 
-            console.log(e.clientX - winX);
-            console.log(xChange + "," + yChange);
-            console.log("a" + currentX + " " + currentY)
+            // console.log(e.clientX - winX);
+            // console.log(xChange + "," + yChange);
+            // console.log("a" + currentX + " " + currentY)
             setTranslate(xChange, yChange, elmnt);
         }
     }
