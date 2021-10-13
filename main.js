@@ -1,4 +1,5 @@
 let windows = [];
+let globalWidth = 0;
 
 function dragElement(elmnt) {
     var pos1 = 0,
@@ -49,6 +50,15 @@ function dragElement(elmnt) {
 }
 
 function makeWindow(x, y, height, width) {
+    let rCorner = document.body.querySelector(".right-corner");
+    var rect = rCorner.getBoundingClientRect();
+
+    winWidth = String(rect.left + 9);
+    globalWidth = winWidth;
+    if (globalWidth < width + x) {
+        x = 0;
+    }
+
     let windowDiv = document.createElement("div");
     windowDiv.className = "window";
     windowDiv.id = windows.length;
@@ -106,11 +116,13 @@ function OOB() {
         // Only works on desktop
         let winWidth = String(window.innerWidth);
 
+
         // Works For Mobile
         let rCorner = document.body.querySelector(".right-corner");
         var rect = rCorner.getBoundingClientRect();
 
-        winWidth = String(rect.right);
+        winWidth = String(rect.left + 9);
+        globalWidth = winWidth;
         let time = new Date();
         console.log(winWidth + time.getTime());
         let winHeight = String(window.innerHeight);
@@ -164,6 +176,3 @@ OOB();
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     makeWindow(6, 200, 300, 500);
 }
-let rCorner = document.body.querySelector(".right-corner");
-var rect = rCorner.getBoundingClientRect();
-console.log(rect.right);
