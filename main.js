@@ -34,7 +34,7 @@ function dragElement(elmnt) {
             initialY = e.clientY - yOffset;
         }
 
-        if (e.target === titleBar) {
+        if (true) {
             elmnt.remove();
             document.body.appendChild(elmnt);
             active = true;
@@ -151,6 +151,22 @@ function makeWindow(x, y, height, width) {
     let windowTitle = document.createElement("div");
     windowTitle.className = "windowheader";
     windowDiv.appendChild(windowTitle);
+
+    for (let i = 0; i < 12; i++) {
+        let yOffset = 4
+        if (i % 2 == 0) {
+            let whiteLine = document.createElement("div");
+            whiteLine.className = "title-bar-line-white";
+            whiteLine.style.top = (i + yOffset) + "px";
+            windowTitle.appendChild(whiteLine);
+        } else {
+            let greyLine = document.createElement("div");
+            greyLine.className = "title-bar-line-grey";
+            greyLine.style.top = (i + yOffset) + "px";
+            windowTitle.appendChild(greyLine);
+        }
+    }
+
     let closeButton = document.createElement("img");
     closeButton.className = "closeButton";
     closeButton.src = "close.png";
@@ -160,6 +176,13 @@ function makeWindow(x, y, height, width) {
     minButton.className = "minButton";
     minButton.src = "minimize.png";
     windowTitle.appendChild(minButton);
+
+    let maxButton = document.createElement("img");
+    maxButton.className = "maxButton";
+    maxButton.src = "maximize.png";
+    windowTitle.appendChild(maxButton);
+
+
 
     dragElement(windowDiv);
     document.body.appendChild(windowDiv);

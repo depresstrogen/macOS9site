@@ -75,6 +75,12 @@ body {
     right: 4px;
 }
 
+.maxButton {
+    position: absolute;
+    top: 4px;
+    right: 20px;
+}
+
 .titlebar {
     display: inline;
     height: 20px;
@@ -92,4 +98,20 @@ body {
     float: right;
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+}
+
+.title-bar-line-white {
+    position: absolute;
+    height: 1px;
+    background-color: rgb(255, 255, 255);
+    left: 21px;
+    right: 38px;
+}
+
+.title-bar-line-grey {
+    position: absolute;
+    height: 1px;
+    background-color: rgb(119, 119, 119);
+    left: 22px;
+    right: 37px;
 }
