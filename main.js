@@ -1,5 +1,4 @@
-// Make the DIV element draggable:
-dragElement(document.querySelector(".window"));
+
 
 let windows = [];
 
@@ -22,6 +21,9 @@ function dragElement(elmnt) {
         document.onmouseup = closeDragElement;
         // call a function whenever the cursor moves:
         document.onmousemove = elementDrag;
+
+        elmnt.remove();
+        document.body.appendChild(elmnt);
     }
 
     function elementDrag(e) {
@@ -44,12 +46,14 @@ function dragElement(elmnt) {
     }
 }
 
-function makeWindow(height, width) {
+function makeWindow(x, y, height, width) {
     let windowDiv = document.createElement("div");
     windowDiv.className = "window";
     windowDiv.id = windows.length;
     windowDiv.style.height = height + "px";
     windowDiv.style.width = width + "px";
+    windowDiv.style.top = y + "px";
+    windowDiv.style.left = x + "px";
 
     let windowTitle = document.createElement("div");
     windowTitle.className = "windowheader";
@@ -67,6 +71,30 @@ function makeWindow(height, width) {
     dragElement(windowDiv);
     document.body.appendChild(windowDiv);
 
+    windows.push(windowDiv);
+    return windowDiv;
 }
 
-makeWindow(300, 500);
+function penith() {
+    let penithWindow = makeWindow(400,400,250, 400);
+    let penithHeader = penithWindow.querySelector(".windowheight")
+    let frame = document.createElement("iframe");
+    frame.src = "dummywebsite.html";
+    frame.height = "225px";
+    frame.width = "396px"
+    penithWindow.appendChild(frame);
+
+}
+
+function lobster() {
+    let lobsterWindow = makeWindow(10,10,342, 320);
+
+    let lob = document.createElement("img");
+    lob.src = "lobster.gif";
+    lobsterWindow.appendChild(lob);
+}
+
+makeWindow(600,200,300, 500);
+
+penith();
+lobster();
