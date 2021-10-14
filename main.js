@@ -48,6 +48,7 @@ function dragElement(elmnt) {
 
     // On click of something
     function dragStart(e) {
+        e.preventDefault();
         // If touch screen use the first touch
         if (e.type === "touchstart") {
             initialX = e.touches[0].clientX - xOffset;
@@ -103,6 +104,7 @@ function dragElement(elmnt) {
 
     //Every time the mouse is moved
     function drag(e) {
+        e.preventDefault();
         // Make sure it is active
         if (active) {
 
