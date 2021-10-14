@@ -42,9 +42,9 @@ function dragElement(elmnt) {
     document.addEventListener("mousemove", drag, false);
 
     // Duplicate listeners for touch screens
-    titleBar.addEventListener("touchstart", dragStart, false);
-    document.addEventListener("touchend", dragEnd, false);
-    document.addEventListener("touchmove", drag, false);
+    titleBar.addEventListener("touchstart", dragStart, { passive: false });
+    document.addEventListener("touchend", dragEnd, { passive: false });
+    document.addEventListener("touchmove", drag, { passive: false });
 
     // On click of something
     function dragStart(e) {
