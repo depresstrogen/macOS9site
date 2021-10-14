@@ -24,6 +24,7 @@ body {
     margin: 0;
     background-image: url("OS9_Default.png");
     background-repeat: repeat;
+    overscroll-behavior-y: contain;
 }
 
 html,
