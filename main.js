@@ -7,8 +7,18 @@ let rCorner = document.body.querySelector(".right-corner");
 let cornerRect = rCorner.getBoundingClientRect();
 globalWidth = cornerRect.left;
 
-//Allows windows to be dragges
+//Allows windows to be interacted with
 function dragElement(elmnt) {
+
+    let closeButton = elmnt.querySelector(".closeButton");
+    closeButton.addEventListener("mouseup", () => {
+        elmnt.remove();
+    })
+
+    closeButton.addEventListener("touchend", () => {
+        elmnt.remove();
+    })
+
     // The title bar to add listeners to
     let titleBar = elmnt.querySelector(".windowheader");
 
@@ -28,13 +38,13 @@ function dragElement(elmnt) {
 
     // Listeners for desktop
     titleBar.addEventListener("mousedown", dragStart, false);
-    titleBar.addEventListener("mouseup", dragEnd, false);
-    titleBar.addEventListener("mousemove", drag, false);
+    document.addEventListener("mouseup", dragEnd, false);
+    document.addEventListener("mousemove", drag, false);
 
     // Duplicate listeners for touch screens
     titleBar.addEventListener("touchstart", dragStart, false);
-    titleBar.addEventListener("touchend", dragEnd, false);
-    titleBar.addEventListener("touchmove", drag, false);
+    document.addEventListener("touchend", dragEnd, false);
+    document.addEventListener("touchmove", drag, false);
 
     // On click of something
     function dragStart(e) {
@@ -334,12 +344,26 @@ function lobster() {
     lobsterWindow.appendChild(lob);
 }
 
+function VM() {
+    let height = 600;
+    let width = 800;
 
+    let penithWindow = makeWindow(400, 400, height, width, "Virtual Machine");
+    let penithHeader = penithWindow.querySelector(".windowheight")
+    let frame = document.createElement("iframe");
+    frame.src = "index.html";
+    frame.height = (height - 25) + "px";
+    frame.width = (width - 4) + "px"
+    penithWindow.appendChild(frame);
+
+}
 
 //Custom windows here
 makeWindow(5, 200, 300, globalWidth - 10, "Blank Window");
 penith();
 lobster();
+
+
 OOB();
 
 
