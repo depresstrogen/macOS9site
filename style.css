@@ -3,6 +3,16 @@
     font-family: Charcoal;
 }
 
+@font-face {
+    src: url(chicago.ttf) format("truetype");
+    font-family: Chicago;
+}
+
+@font-face {
+    src: url(chicagolight.ttf) format("truetype");
+    font-family: Chicago Light;
+}
+
 header {
     display: inline;
     height: 20px;
@@ -150,4 +160,20 @@ body {
     font-family: Charcoal;
     font-display: swap;
     font-size: 13px;
+}
+
+.icon {
+    position: absolute;
+    right: 32px;
+    margin-top: 16px;
+}
+
+.desktop-icon-text {
+    position: absolute;
+    top: 24px;
+    font-family: Chicago Light;
+    font-weight: 100;
+    font-size: 12px;
+    padding: 2px;
+    background-color: rgb(204, 204, 204);
 }

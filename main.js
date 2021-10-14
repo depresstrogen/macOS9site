@@ -324,6 +324,10 @@ setInterval(function() {
 }, 100);
 
 
+function desktop() {
+
+}
+
 
 
 function penith() {
@@ -358,10 +362,12 @@ function VM() {
 
 }
 
-//Custom windows here
-makeWindow(5, 200, 300, globalWidth - 10, "Blank Window");
-penith();
-lobster();
+function icons(icon) {
+    if (icon == "blank") makeWindow(100, 100, 300, 400, "Blank Window");
+    if (icon == "lobster") lobster();
+    if (icon == "penith") penith();
+
+}
 
 
 OOB();
