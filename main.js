@@ -148,7 +148,6 @@ function dragElement(elmnt) {
             setTranslate(xChange, yChange, elmnt);
         }
         // Make sure its not OOB
-        OOB();
     }
 
     // Translates div
@@ -192,7 +191,6 @@ function makeWindow(x, y, height, width, name) {
     windowDiv.style.left = x + "px";
 
     windowDiv.dataset.name = name;
-
     // Creates title bar
     let windowTitle = document.createElement("div");
     windowTitle.className = "windowheader";
@@ -247,11 +245,12 @@ function makeWindow(x, y, height, width, name) {
     // Add to window array
     windows.push(windowDiv);
 
+    OOB("winStart");
     //Return if a function called it
     return windowDiv;
 }
 
-async function OOB() {
+async function OOB(condition) {
     for (let i = 0; i < windows.length; i++) {
         // Get Current Window
         let curWin = windows[i];
@@ -299,10 +298,24 @@ async function OOB() {
         }
 
         // Check for collision with edges of screen
+
         if (curWinWidth + curWinX > winWidth) curWin.style.left = (window.innerWidth - curWinWidth) + "px";
         if (curWinX < 0) curWin.style.left = 0 + "px";
         if (curWinHeight + curWinY > winHeight) curWin.style.top = (window.innerHeight - curWinHeight) + "px";
         if (curWinY < 22) curWin.style.top = 22 + "px";
+
+        if (condition = "winStart") {
+            let outX = false;
+            let outY = false;
+            if (curWinWidth + curWinX > winWidth) outX = true;
+            if (curWinX < 0) outX = true;
+            if (curWinHeight + curWinY > winHeight) outY = true;
+            if (curWinY < 22) outY = true;
+
+            if (outX) {
+                curWin.style.width = (globalWidth - 10) + "px";
+            }
+        }
 
     }
 }
@@ -352,6 +365,11 @@ function VM() {
     }
 
     let penithWindow = makeWindow(400, 400, height, width, "Virtual Mac");
+    height = penithWindow.style.height;
+    height = height.substring(0, height.length - 2);
+    width = penithWindow.style.width;
+    width = width.substring(0, width.length - 2);
+
     let penithHeader = penithWindow.querySelector(".windowheight")
     let frame = document.createElement("iframe");
     frame.src = "index.html";
@@ -420,6 +438,5 @@ function previewWallpaper() {
 
 // Check for OOB 10 times a second
 setInterval(function() {
-    OOB();
     updateTime();
 }, 100);
