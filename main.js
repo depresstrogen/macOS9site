@@ -317,16 +317,8 @@ window.addEventListener('resize', function(event) {
     OOB();
 }, true);
 
-// Check for OOB 10 times a second
-setInterval(function() {
-    OOB();
-    updateTime();
-}, 100);
 
 
-function desktop() {
-
-}
 
 
 
@@ -352,7 +344,12 @@ function VM() {
     let height = 600;
     let width = 800;
 
-    let penithWindow = makeWindow(400, 400, height, width, "Virtual Machine");
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        height = 600;
+        width = 400;
+    }
+
+    let penithWindow = makeWindow(400, 400, height, width, "Virtual Mac");
     let penithHeader = penithWindow.querySelector(".windowheight")
     let frame = document.createElement("iframe");
     frame.src = "index.html";
@@ -362,21 +359,65 @@ function VM() {
 
 }
 
+function appearance() {
+    let height = 336;
+    let width = 475;
+    let appWindow = makeWindow(50, 50, height, width, "Appearance");
+    let selectDiv = document.createElement("div");
+    appWindow.appendChild(selectDiv);
+    selectDiv.innerHTML = `
+    <form>
+        <iframe class="wallpaper-preview" height="142" width="190" frameBorder="0" style="background-image:url(wallpapers/MacOSDefault.png)"></iframe>
+        <select class="wallselect" name="wallpapers" id="wallselect" size="8" onchange="previewWallpaper()">
+            <option value="">Mac OS Default</option>
+            <option value="">Lollipop</option>
+            <option value="">Lollipop 2</option>
+            <option value="">Lollipop 3</option>
+            <option value="">Lollipop 4</option>
+            <option value="">Lollipop 5</option>
+            <option value="">Lollipop 6</option>
+            <option value="">Strawberry</option>
+        </select><input class="wallapply" type="button" value="Set Desktop" onclick="changeWallpaper()"/>
+    </form>
+    `
+}
+
 function icons(icon) {
     if (icon == "blank") makeWindow(100, 100, 300, 400, "Blank Window");
     if (icon == "lobster") lobster();
     if (icon == "penith") penith();
-
+    if (icon == "VM") VM();
+    if (icon == "Appearance") appearance();
 }
 
+//475
+//336
 
 OOB();
 
 
+function changeWallpaper() {
+    console.log("here");
+    let wallpaperSelect = document.getElementById("wallselect");
+    if (wallpaperSelect.selectedIndex != -1) {
+        let wallName = wallpaperSelect.options[wallpaperSelect.selectedIndex].text;
+        let imgPath = ("url('wallpapers/" + wallName + ".png')").replaceAll(' ', '');
+        console.log(imgPath);
+        document.body.style.backgroundImage = imgPath;
+    }
 
-
-
-
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    //mobile
 }
+
+function previewWallpaper() {
+    let previewFrame = document.querySelector(".wallpaper-preview");
+    let wallpaperSelect = document.getElementById("wallselect");
+    let wallName = wallpaperSelect.options[wallpaperSelect.selectedIndex].text;
+    let imgPath = ("background-image: url(wallpapers/" + wallName + ".png)").replaceAll(' ', '');
+    previewFrame.style = imgPath;
+}
+
+// Check for OOB 10 times a second
+setInterval(function() {
+    OOB();
+    updateTime();
+}, 100);

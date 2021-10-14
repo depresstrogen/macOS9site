@@ -22,9 +22,9 @@ header {
 
 body {
     margin: 0;
-    background-image: url("OS9_Default.png");
     background-repeat: repeat;
     overscroll-behavior: contain;
+    background-image: url("wallpapers/MacOSDefault.png");
 }
 
 html,
@@ -177,4 +177,29 @@ body {
     font-size: 12px;
     padding: 2px;
     background-color: rgb(204, 204, 204);
+}
+
+.wallselect {
+    position: absolute;
+    width: 200px;
+    height: 130px;
+    right: 20px;
+    top: 86px;
+    font-family: Chicago Light;
+    border: 3px solid;
+    border-color: rgb(102, 102, 204);
+    border-radius: 0.25em;
+}
+
+.wallapply {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-family: Chicago Light;
+}
+
+.wallpaper-preview {
+    position: absolute;
+    left: 35px;
+    top: 77px;
 }
