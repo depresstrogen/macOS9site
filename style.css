@@ -54,8 +54,7 @@ body {
 
 .noButtonText {
     position: absolute;
-    top: 2px;
-    margin-left: 28px;
+    top: 1px;
     background: transparent;
     border: none !important;
     font-family: Charcoal;
@@ -114,4 +113,41 @@ body {
     background-color: rgb(119, 119, 119);
     left: 22px;
     right: 37px;
+}
+
+.windowName {
+    position: absolute;
+    font-family: Charcoal;
+    font-weight: lighter;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(204, 204, 204);
+    top: 2px;
+    white-space: nowrap;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: 13px;
+}
+
+.right-header {
+    position: absolute;
+    right: 65px;
+    top: 2px;
+    background: transparent;
+    border: none !important;
+    font-family: Charcoal;
+    font-display: swap;
+    font-size: 13px;
+}
+
+.time {
+    position: absolute;
+    display: inline;
+    right: 100px;
+    top: 2px;
+    background: transparent;
+    border: none !important;
+    font-family: Charcoal;
+    font-display: swap;
+    font-size: 13px;
 }
