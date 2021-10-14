@@ -332,16 +332,11 @@ window.addEventListener('resize', function(event) {
     OOB();
 }, true);
 
-
-
-
-
-
 function penith() {
     let penithWindow = makeWindow(400, 400, 250, 400, "I Thlammed My Penith In A Car Door");
     let penithHeader = penithWindow.querySelector(".windowheight")
     let frame = document.createElement("iframe");
-    frame.src = "dummywebsite.html";
+    frame.src = "apps/penith.html";
     frame.height = "225px";
     frame.width = "396px"
     penithWindow.appendChild(frame);
@@ -364,18 +359,18 @@ function VM() {
         width = 400;
     }
 
-    let penithWindow = makeWindow(400, 400, height, width, "Virtual Mac");
-    height = penithWindow.style.height;
+    let VMWindow = makeWindow(400, 400, height, width, "Virtual Mac");
+    height = VMWindow.style.height;
     height = height.substring(0, height.length - 2);
-    width = penithWindow.style.width;
+    width = VMWindow.style.width;
     width = width.substring(0, width.length - 2);
 
-    let penithHeader = penithWindow.querySelector(".windowheight")
+    let VMHeader = VMWindow.querySelector(".windowheight")
     let frame = document.createElement("iframe");
     frame.src = "index.html";
     frame.height = (height - 25) + "px";
     frame.width = (width - 4) + "px"
-    penithWindow.appendChild(frame);
+    VMWindow.appendChild(frame);
 
 }
 
@@ -408,6 +403,7 @@ function icons(icon) {
     if (icon == "penith") penith();
     if (icon == "VM") VM();
     if (icon == "Appearance") appearance();
+    if (icon == "GameLife") gameOfLife();
 }
 
 //475
@@ -436,6 +432,22 @@ function previewWallpaper() {
     previewFrame.style = imgPath;
 }
 
+function gameOfLife() {
+    let height = 465;
+    let width = 600;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        height = 610;
+        width = 400;
+    }
+    let lifeWindow = makeWindow(10, 30, height, width, "Game Of Life");
+    let lifeHeader = lifeWindow.querySelector(".windowheight")
+    let frame = document.createElement("iframe");
+    frame.src = "apps/life.html";
+    frame.height = (height - 25) + "px";
+    frame.width = (width - 4) + "px"
+    lifeWindow.appendChild(frame);
+
+}
 // Check for OOB 10 times a second
 setInterval(function() {
     updateTime();
