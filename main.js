@@ -436,7 +436,7 @@ function gameOfLife() {
     let height = 465;
     let width = 600;
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        height = 610;
+        height = 630;
         width = 400;
     }
     let lifeWindow = makeWindow(10, 30, height, width, "Game Of Life");
