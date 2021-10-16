@@ -302,10 +302,6 @@ async function OOB(condition) {
             if (curWinX < 0) outX = true;
             if (curWinHeight + curWinY > winHeight) outY = true;
             if (curWinY < 22) outY = true;
-
-            if (outX) {
-                curWin.style.width = (globalWidth - 10) + "px";
-            }
         }
 
     }
