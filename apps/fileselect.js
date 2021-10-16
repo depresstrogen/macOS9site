@@ -7,6 +7,7 @@ function fileSelect(fileArray, win, vid) {
         button.addEventListener("click", () => {
             vid.src = fileArray[i];
             console.log(win.style.height + " " + vid.videoHeight);
+            win.remove();
         })
     }
 }
