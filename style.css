@@ -203,3 +203,32 @@ body {
     left: 35px;
     top: 77px;
 }
+
+INPUT[type=checkbox] {
+    background-color: #DDD;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 3%;
+    height: 3%;
+    cursor: pointer;
+    position: relative;
+    margin: 0px;
+    margin-bottom: -0.45%;
+    border-radius: 0px;
+    border-color: black;
+    background: transparent url(buttonunclicked.png) center top;
+    background-size: cover;
+    border: 1px solid;
+}
+
+INPUT[type=checkbox]:checked {
+    background-color: #9e23cf;
+    background: #9e23cf no-repeat;
+    background: transparent url(buttonclicked.png) center top;
+    background-size: cover;
+}
+
+.gameOfLife {
+    margin: auto;
+}

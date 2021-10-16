@@ -1,5 +1,11 @@
+window.icons = icons;
+
 // Window Array
 let windows = [];
+
+document.body.addEventListener("click", () => {
+    console.log("AAAAA");
+})
 
 // Applies global width using the right corner element so it works on mobile too
 let globalWidth = 0;
@@ -334,11 +340,11 @@ window.addEventListener('resize', function(event) {
 
 function penith() {
     let penithWindow = makeWindow(400, 400, 250, 400, "I Thlammed My Penith In A Car Door");
-    let penithHeader = penithWindow.querySelector(".windowheight")
-    let frame = document.createElement("iframe");
-    frame.src = "apps/penith.html";
-    frame.height = "225px";
-    frame.width = "396px"
+    let penithDiv = document.createElement("div");
+    penithDiv.innerHTML = `<p>penis</p>
+
+    <img src= "apps/penith.png" width="200px"/>`
+    penithWindow.appendChild(penithDiv);
     penithWindow.appendChild(frame);
 
 }
@@ -440,14 +446,17 @@ function gameOfLife() {
         width = 400;
     }
     let lifeWindow = makeWindow(10, 30, height, width, "Game Of Life");
-    let lifeHeader = lifeWindow.querySelector(".windowheight")
-    let frame = document.createElement("iframe");
-    frame.src = "apps/life.html";
-    frame.height = (height - 25) + "px";
-    frame.width = (width - 4) + "px"
-    lifeWindow.appendChild(frame);
+    let tempDiv = document.createElement("div");
+    tempDiv.className = "gameOfLife";
+    tempDiv.style.height = height - 22 + "px";
+    tempDiv.style.width = width + "px";
+    lifeWindow.appendChild(tempDiv);
+    playGameOfLife(tempDiv);
+
 
 }
+
+
 // Check for OOB 10 times a second
 setInterval(function() {
     updateTime();
