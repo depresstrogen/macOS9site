@@ -1,4 +1,4 @@
-let div;
+let div = document.createElement("div");
 let boardX = 30;
 let boardY = 20;
 
@@ -13,7 +13,7 @@ let clientY = window.innerHeight;
 
 let blockSize = 30;
 
-window.addEventListener('resize', function(event) {
+div.addEventListener('resize', function(event) {
     setBlockSize();
     for (let i = 0; i < boardY; i++) {
         for (let j = 0; j < boardX; j++) {
