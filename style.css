@@ -52,12 +52,12 @@ body {
     background-color: white;
 }
 
-.windowheader {
+.window__titlebar {
     height: 22px;
     background-color: rgb(204, 204, 204);
 }
 
-.apple-button {
+.menubar__apple-button {
     position: absolute;
     top: 2px;
     display: inline;
@@ -65,7 +65,7 @@ body {
     margin-right: 10px;
 }
 
-.headerText {
+.menubar__action-button-div {
     display: inline;
     font-size: 12px;
     -webkit-font-smoothing: auto;
@@ -73,7 +73,7 @@ body {
     border: none !important;
 }
 
-.noButtonText {
+.menubar__button--no-text {
     position: absolute;
     top: 1px;
     background: transparent;
@@ -83,36 +83,36 @@ body {
     font-size: 13px;
 }
 
-.closeButton {
+.window__titlebar__close-button {
     position: absolute;
     top: 4px;
     left: 4px;
 }
 
-.minButton {
+.window__titlebar__min-button {
     position: absolute;
     top: 4px;
     right: 4px;
 }
 
-.maxButton {
+.window__titlebar__max-button {
     position: absolute;
     top: 4px;
     right: 20px;
 }
 
-.titlebar {
+.menubar {
     display: inline;
     height: 20px;
     background-color: rgb(221, 221, 221);
     display: block;
 }
 
-.left-corner {
+.menubar__left-corner {
     display: inline;
 }
 
-.right-corner {
+.menubar__right-corner {
     display: inline;
     position: relative;
     float: right;
@@ -120,7 +120,7 @@ body {
     transform: scaleX(-1);
 }
 
-.title-bar-line-white {
+.window__titlebar__line--white {
     position: absolute;
     height: 1px;
     background-color: rgb(255, 255, 255);
@@ -128,7 +128,7 @@ body {
     right: 38px;
 }
 
-.title-bar-line-grey {
+.window__titlebar__line--grey {
     position: absolute;
     height: 1px;
     background-color: rgb(119, 119, 119);
@@ -136,7 +136,7 @@ body {
     right: 37px;
 }
 
-.windowName {
+.window__title-bar__windowName {
     position: absolute;
     font-family: Charcoal;
     font-weight: lighter;
@@ -150,7 +150,7 @@ body {
     font-size: 13px;
 }
 
-.right-header {
+.menubar__right-header {
     position: absolute;
     right: 65px;
     top: 2px;
@@ -161,7 +161,7 @@ body {
     font-size: 13px;
 }
 
-.time {
+.menubar__time {
     position: absolute;
     display: inline;
     right: 100px;
@@ -173,13 +173,13 @@ body {
     font-size: 13px;
 }
 
-.icon {
+.desktop__icon {
     position: absolute;
     right: 32px;
     margin-top: 16px;
 }
 
-.desktop-icon-text {
+.desktop__icon--text {
     position: absolute;
     top: 24px;
     font-family: Geneva;
@@ -189,7 +189,7 @@ body {
     background-color: rgb(204, 204, 204);
 }
 
-.wallselect {
+.appearance_selector {
     position: absolute;
     width: 200px;
     height: 130px;
@@ -201,20 +201,20 @@ body {
     border-radius: 0.25em;
 }
 
-.wallapply {
+.appearance_apply {
     position: absolute;
     right: 10px;
     bottom: 10px;
     font-family: Chicago Light;
 }
 
-.wallpaper-preview {
+.appearance__preview {
     position: absolute;
     left: 35px;
     top: 77px;
 }
 
-INPUT[type=checkbox] {
+.gol__board__box--unchecked {
     background-color: #DDD;
     appearance: none;
     -webkit-appearance: none;
@@ -227,27 +227,38 @@ INPUT[type=checkbox] {
     margin-bottom: -0.45%;
     border-radius: 0px;
     border-color: black;
-    background: transparent url(buttonunclicked.png) center top;
+    background: transparent url(img/os/buttonunclicked.png) center top;
     background-size: cover;
     border: 1px solid;
 }
 
-INPUT[type=checkbox]:checked {
-    background-color: #9e23cf;
-    background: #9e23cf no-repeat;
-    background: transparent url(buttonclicked.png) center top;
+.gol__board__box--checked {
+    background-color: #DDD;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 3%;
+    height: 3%;
+    cursor: pointer;
+    position: relative;
+    margin: 0px;
+    margin-bottom: -0.45%;
+    border-radius: 0px;
+    border-color: black;
+    background: transparent url(img/os/buttonclicked.png) center top;
     background-size: cover;
+    border: 1px solid;
 }
 
-.gameOfLife {
+.gol {
     margin: auto;
 }
 
-.quicktime {
-    background-image: url("qtbkg.png");
+.qt {
+    background-image: url("img/quicktime/qtbkg.png");
 }
 
-.quicktime-video {
+.qt__video {
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -255,7 +266,7 @@ INPUT[type=checkbox]:checked {
     max-height: 400px;
 }
 
-.timer-div {
+.qt__time {
     position: absolute;
     height: 19px;
     border-radius: 5px;
@@ -263,11 +274,11 @@ INPUT[type=checkbox]:checked {
     background-color: rgb(239, 247, 222);
 }
 
-.playbar {
+.qt__time__playbar {
     border: rgb(82, 82, 82) 1px solid;
 }
 
-.playtime {
+.qt__time__playtime {
     font-family: Monaco;
     font-size: 12px;
     display: inline;
@@ -275,27 +286,27 @@ INPUT[type=checkbox]:checked {
     padding: 5px;
 }
 
-.qt-spacers {
+.qt__time__spacers {
     padding: 1px;
 }
 
-.qt-bardiv {
+.qt__time__playbar--div {
     display: inline;
 }
 
-.qt-playtimediv {
+.qt__time__playtime--div {
     display: inline;
 }
 
-.qt-spacerdiv {
+.qt__time__spacer--div {
     display: inline;
     position: absolute;
     padding-left: 5px;
     top: 2px;
 }
 
-.qt-playbutton {
-    background: url(qtplaybutton.png) no-repeat;
+.qt__play-button {
+    background: url(img/quicktime/qtplaybutton.png) no-repeat;
     background-size: 48px;
     width: 48px;
     height: 48px;
@@ -303,7 +314,7 @@ INPUT[type=checkbox]:checked {
     border: none;
 }
 
-.qt-playbuttondiv {
+.qt__play-button--div {
     display: block;
     position: absolute;
     padding-top: 26px;
@@ -311,20 +322,20 @@ INPUT[type=checkbox]:checked {
     transform: translateX(-50%);
 }
 
-.qt-footerdiv {
+.qt__footer {
     display: block;
     position: absolute;
     width: 100%;
     bottom: -6px;
 }
 
-.qt-footerimg {
+.qt__footer__img {
     display: inline;
     position: absolute;
     top: -41px;
 }
 
-.qt-footerextend {
+.qt__footer__img--extend {
     display: inline;
     position: absolute;
     margin-top: -40px;
@@ -334,7 +345,7 @@ INPUT[type=checkbox]:checked {
     font-family: Chicago Light;
 }
 
-.qt-fileselect {
+.qt__file-select {
     position: absolute;
     right: 10px;
     bottom: 10px;

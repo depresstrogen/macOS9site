@@ -1,7 +1,7 @@
 //Allows windows to be interacted with
 function dragElement(elmnt) {
 
-    let closeButton = elmnt.querySelector(".closeButton");
+    let closeButton = elmnt.querySelector(".window__titlebar__close-button");
     closeButton.addEventListener("mouseup", () => {
         elmnt.remove();
     })
@@ -11,7 +11,7 @@ function dragElement(elmnt) {
     })
 
     // The title bar to add listeners to
-    let titleBar = elmnt.querySelector(".windowheader");
+    let titleBar = elmnt.querySelector(".window__titlebar");
 
     // Allows drag() to only run if active
     let active = false;
@@ -151,7 +151,7 @@ function dragElement(elmnt) {
 
 function makeWindow(x, y, height, width, name) {
     // Gets the right corner for mobile friendly OOB checking
-    let rCorner = document.body.querySelector(".right-corner");
+    let rCorner = document.body.querySelector(".menubar__right-corner");
     let rect = rCorner.getBoundingClientRect();
 
     // Sets width to that corner
@@ -184,7 +184,7 @@ function makeWindow(x, y, height, width, name) {
     windowDiv.dataset.name = name;
     // Creates title bar
     let windowTitle = document.createElement("div");
-    windowTitle.className = "windowheader";
+    windowTitle.className = "window__titlebar";
     windowDiv.appendChild(windowTitle);
 
     // Makes the decorative lines
@@ -194,12 +194,12 @@ function makeWindow(x, y, height, width, name) {
             // White lines first
         if (i % 2 == 0) {
             let whiteLine = document.createElement("div");
-            whiteLine.className = "title-bar-line-white";
+            whiteLine.className = "window__titlebar__line--white";
             whiteLine.style.top = (i + yOffset) + "px";
             windowTitle.appendChild(whiteLine);
         } else {
             let greyLine = document.createElement("div");
-            greyLine.className = "title-bar-line-grey";
+            greyLine.className = "window__titlebar__line--grey";
             greyLine.style.top = (i + yOffset) + "px";
             windowTitle.appendChild(greyLine);
         }
@@ -208,22 +208,22 @@ function makeWindow(x, y, height, width, name) {
     // Defines buttons, and the images.
     // All positioning is done in the css file
     let closeButton = document.createElement("img");
-    closeButton.className = "closeButton";
+    closeButton.className = "window__titlebar__close-button";
     closeButton.src = "close.png";
     windowTitle.appendChild(closeButton);
 
     let minButton = document.createElement("img");
-    minButton.className = "minButton";
+    minButton.className = "window__titlebar__min-button";
     minButton.src = "minimize.png";
     windowTitle.appendChild(minButton);
 
     let maxButton = document.createElement("img");
-    maxButton.className = "maxButton";
+    maxButton.className = "window__titlebar__max-button";
     maxButton.src = "maximize.png";
     windowTitle.appendChild(maxButton);
 
     let nameTag = document.createElement("div");
-    nameTag.className = "windowName";
+    nameTag.className = "window__title-bar__windowName";
     nameTag.innerHTML = name;
     windowTitle.appendChild(nameTag);
 
@@ -250,7 +250,7 @@ async function OOB(condition) {
         // Only works on desktop
         let winWidth = String(window.innerWidth);
         // Works For Mobile
-        let rCorner = document.body.querySelector(".right-corner");
+        let rCorner = document.body.querySelector(".menubar__right-corner");
         let rect = rCorner.getBoundingClientRect();
         winWidth = String(rect.left + 9);
         globalWidth = winWidth;

@@ -2,7 +2,7 @@ function playQuicktime(div) {
 
     let video = document.createElement("video");
     video.src = "vfs/videos/sandwick.mp4";
-    video.className = "quicktime-video";
+    video.className = "qt__video";
 
     let headerHeight = 22;
     let footerHeight = 91;
@@ -25,7 +25,7 @@ function playQuicktime(div) {
     div.appendChild(video);
 
     let timerDiv = document.createElement("div");
-    timerDiv.className = "timer-div";
+    timerDiv.className = "qt__time";
     let divWidth = div.style.width.substring(0, div.style.width.length - 2);
     let timerWidth = (divWidth - 20);
     timerDiv.style.width = timerWidth + "px";
@@ -40,35 +40,36 @@ function playQuicktime(div) {
     }, false);
 
     let playtimeDiv = document.createElement("div");
-    playtimeDiv.className = "qt-playtimediv";
+    playtimeDiv.className = "qt__time__playtime--div";
     timerDiv.appendChild(playtimeDiv);
     let playtime = document.createElement("p");
     playtime.innerHTML = "00:00:00";
-    playtime.className = "playtime";
+    playtime.className = "qt__time__playtime";
     playtimeDiv.appendChild(playtime);
 
     let playBarWidth = timerWidth - (84) - (7 * 8) - 6;
     let barDiv = document.createElement("div");
-    barDiv.className = "qt-bardiv";
+    barDiv.className = "qt__time__playbar--div";
     timerDiv.appendChild(barDiv);
     let playbar = makePlaybar(0, 0, playBarWidth);
     barDiv.appendChild(playbar);
 
     let spacerDiv = document.createElement("div");
-    spacerDiv.className = "qt-spacerdiv";
+    spacerDiv.className = "qt__time__spacer--div";
     timerDiv.appendChild(spacerDiv);
     for (let i = 0; i < 8; i++) {
         let spacers = document.createElement("img");
-        spacers.src = "qtspacers.png";
-        spacers.className = "qt-spacers";
+        spacers.src = "img/quicktime/qtspacers.png";
+        spacers.className = "qt__time__spacers";
         spacerDiv.appendChild(spacers);
     }
 
     let playbuttonDiv = document.createElement("div");
-    playbuttonDiv.className = "qt-playbuttondiv";
+    playbuttonDiv.className = "qt__play-button--div";
     div.appendChild(playbuttonDiv);
+
     let playButton = document.createElement("button");
-    playButton.className = "qt-playbutton";
+    playButton.className = "qt__play-button";
     playbuttonDiv.appendChild(playButton);
     playButton.addEventListener("click", () => {
         if (video.paused) {
@@ -82,19 +83,19 @@ function playQuicktime(div) {
     let footerImgWidth = 197;
     let footerX = 0;
     let qtFooterDiv = document.createElement("div");
-    qtFooterDiv.className = "qt-footerdiv";
+    qtFooterDiv.className = "qt__footer";
     div.appendChild(qtFooterDiv);
     for (; footerX < divWidth / 2 - (footerImgWidth / 2) - 5; footerX++) {
         let qtExtendImg = document.createElement("img");
-        qtExtendImg.src = "qtfooterline.png";
-        qtExtendImg.className = "qt-footerextend";
+        qtExtendImg.src = "img/quicktime/qtfooterline.png";
+        qtExtendImg.className = "qt__footer__img--extend";
         qtExtendImg.style.left = footerX + "px";
         qtFooterDiv.appendChild(qtExtendImg);
     }
 
     let qtFooterImg = document.createElement("img");
-    qtFooterImg.className = "qt-footerimg";
-    qtFooterImg.src = "qtfooter.png";
+    qtFooterImg.className = "qt__footer__img";
+    qtFooterImg.src = "img/quicktime/qtfooter.png";
     qtFooterImg.style.left = footerX + "px";
     qtFooterDiv.appendChild(qtFooterImg);
 
@@ -102,15 +103,15 @@ function playQuicktime(div) {
 
     for (; footerX < divWidth; footerX++) {
         let qtExtendImg = document.createElement("img");
-        qtExtendImg.src = "qtfooterline.png";
-        qtExtendImg.className = "qt-footerextend";
+        qtExtendImg.src = "img/quicktime/qtfooterline.png";
+        qtExtendImg.className = "qt__footer__img--extend";
         qtExtendImg.style.left = footerX + "px";
         qtFooterDiv.appendChild(qtExtendImg);
     }
 
     let fileButton = document.createElement("button");
     fileButton.innerHTML = "Select File";
-    fileButton.className = "qt-fileselect mac-button"
+    fileButton.className = "qt__file-select mac-button"
     qtFooterDiv.appendChild(fileButton);
     fileButton.addEventListener("click", () => {
         let filewin = makeWindow(0, 0, 300, 400, "Videos");
@@ -134,11 +135,11 @@ function playQuicktime(div) {
 
     function updateCountdown() {
         //console.log(video.duration - video.currentTime);
-        timerDiv.querySelector(".playbar").remove();
-        timerDiv.querySelector(".playtime").remove();
+        timerDiv.querySelector(".qt__time__playbar").remove();
+        timerDiv.querySelector(".qt__time__playtime").remove();
         let playtime = document.createElement("p");
         playtime.innerHTML = secMinHour(Math.floor(video.currentTime));
-        playtime.className = "playtime";
+        playtime.className = "qt__time__playtime";
         playtimeDiv.appendChild(playtime);
 
         barDiv.appendChild(makePlaybar(video.currentTime, video.duration, playBarWidth));
@@ -152,7 +153,7 @@ function makePlaybar(curTime, totalTime, width) {
     console.log(totalTime);
     let height = 8;
     let c = document.createElement("canvas");
-    c.className = "playbar";
+    c.className = "qt__time__playbar";
     c.style.width = width + 10 + "px";
     c.style.height = height + "px";
     let cx = c.getContext("2d");
@@ -179,4 +180,20 @@ function makePlaybar(curTime, totalTime, width) {
 
     console.log(dotPosition);
     return c;
+}
+
+function quicktime() {
+    let height = 200;
+    let width = 760;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        height = 480;
+        width = 400;
+    }
+    let quickWindow = makeWindow(10, 30, height, width, "Quicktime Player");
+    let tempDiv = document.createElement("div");
+    tempDiv.className = "qt";
+    tempDiv.style.height = height - 22 + "px";
+    tempDiv.style.width = width + "px";
+    quickWindow.appendChild(tempDiv);
+    playQuicktime(tempDiv);
 }

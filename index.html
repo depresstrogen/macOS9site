@@ -8,62 +8,63 @@
 
 <body>
 
+    <div class=menubar>
+        <img class=menubar__left-corner src="img/os/corner.png" />
+        <img class=menubar__apple-button src="img/os/applelogo.png" />
 
-    <div class=titlebar>
-        <img class=left-corner src="corner.png" />
-        <img class=apple-button src="applelogo.png" />
-
-        <div class=headerText>
-            <button class=noButtonText style="margin-left: 28px;">File</button>
-            <button class=noButtonText style="margin-left: 63px;">Edit</button>
-            <button class=noButtonText style="margin-left: 100px;">View</button>
-            <button class=noButtonText style="margin-left: 145px;">Special</button>
-            <button class=noButtonText style="margin-left: 203px;">Help</button>
+        <div class=menubar__action-button-div>
+            <button class=menubar__button--no-text style="margin-left: 28px;">File</button>
+            <button class=menubar__button--no-text style="margin-left: 63px;">Edit</button>
+            <button class=menubar__button--no-text style="margin-left: 100px;">View</button>
+            <button class=menubar__button--no-text style="margin-left: 145px;">Special</button>
+            <button class=menubar__button--no-text style="margin-left: 203px;">Help</button>
         </div>
-        <div class=time>
-            8:55 PM
+        <div class=menubar__time>
+            DE:EZ PM
         </div>
-        <div class=right-header>
-            <img src="headerdivider.png" style="margin-right: 3px;" />
-            <img src="finder.png" />
-            <button class=noButtonText style="top: -1px;">Finder</button>
+        <div class=menubar__right-header>
+            <img src="img/os/headerdivider.png" style="margin-right: 3px;" />
+            <img src="img/os/finder.png" />
+            <button class=menubar__button--no-text style="top: -1px;">Finder</button>
         </div>
-        <img class=right-corner src="corner.png" />
+        <img class=menubar__right-corner src="img/os/corner.png" />
     </div>
 
     <div class=desktop>
-        <div class=icon onclick="icons('blank')">
-            <img src="blankpageicon.png">
-            <p class=desktop-icon-text style="white-space: nowrap; left: -18px; ">Blank Page</p>
+        <div class=desktop__icon onclick="icons('blank')">
+            <img src="img/desktop/blankpageicon.png">
+            <p class=desktop__icon--text style="white-space: nowrap; left: -18px; ">Blank Page</p>
         </div>
-        <div class=icon onclick="icons('lobster')" style="margin-top: 116px;">
-            <img src="lobster.png">
-            <p class=desktop-icon-text style="white-space: nowrap; left: -16px; ">lobster.gif</p>
+        <div class=desktop__icon onclick="icons('lobster')" style="margin-top: 116px;">
+            <img src="img/desktop/lobster.png">
+            <p class=desktop__icon--text style="white-space: nowrap; left: -16px; ">lobster.gif</p>
         </div>
-        <div class=icon onclick="icons('penith')" style="margin-top: 212px;">
-            <img src="penithicon.png">
-            <p class=desktop-icon-text style="white-space: nowrap; left: -4px; ">Penith</p>
+        <div class=desktop__icon onclick="icons('penith')" style="margin-top: 212px;">
+            <img src="img/desktop/penithicon.png">
+            <p class=desktop__icon--text style="white-space: nowrap; left: -4px; ">Penith</p>
         </div>
-        <div class=icon onclick="icons('VM')" style="margin-top: 308px;">
-            <img src="computer.png">
-            <p class=desktop-icon-text style="white-space: nowrap; left: -18px; ">Virtual Mac</p>
+        <div class=desktop__icon onclick="icons('VM')" style="margin-top: 308px;">
+            <img src="img/desktop/computer.png">
+            <p class=desktop__icon--text style="white-space: nowrap; left: -18px; ">Virtual Mac</p>
         </div>
-        <div class=icon onclick="icons('Appearance')" style="margin-top: 404px;">
-            <img src="appearance.png">
-            <p class=desktop-icon-text style="white-space: nowrap; left: -21px; ">Appearance</p>
+        <div class=desktop__icon onclick="icons('Appearance')" style="margin-top: 404px;">
+            <img src="img/desktop/appearance.png">
+            <p class=desktop__icon--text style="white-space: nowrap; left: -21px; ">Appearance</p>
         </div>
-        <div class=icon onclick="icons('GameLife')" style="margin-top: 500px;">
-            <img src="lifeicon.png">
-            <p class=desktop-icon-text style="white-space: nowrap; left: -24px; ">Game Of Life</p>
+        <div class=desktop__icon onclick="icons('GameLife')" style="margin-top: 500px;">
+            <img src="img/desktop/lifeicon.png">
+            <p class=desktop__icon--text style="white-space: nowrap; left: -24px; ">Game Of Life</p>
         </div>
-        <div class=icon onclick="icons('quicktime')" style="margin-top: 596px;">
-            <img src="quicktime.png">
-            <p class=desktop-icon-text style="white-space: nowrap; left: -37px; ">Quicktime Player</p>
+        <div class=desktop__icon onclick="icons('quicktime')" style="margin-top: 596px;">
+            <img src="img/desktop/quicktime.png">
+            <p class=desktop__icon--text style="white-space: nowrap; left: -37px; ">Quicktime Player</p>
         </div>
     </div>
     <script src="windows.js"></script>
     <script src="apps/fileselect.js"></script>
+    <script src="apps/appearance.js"></script>
     <script src="apps/life.js"></script>
     <script src="apps/quicktime.js"></script>
     <script src="main.js"></script>
+
 </body>

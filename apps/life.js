@@ -44,17 +44,22 @@ let checkboxArray = Array.from(Array(boardY), () => new Array(boardX));
 
 function makeCheckArray() {
     let checkboxDiv = document.createElement("div");
-    checkboxDiv.className = "checkboxDiv";
+    checkboxDiv.className = "gol__board";
     div.appendChild(checkboxDiv);
     for (let i = 0; i < boardY; i++) {
         let tempDiv = document.createElement("div");
-        tempDiv.className = "row";
+        tempDiv.className = "gol__board__row";
         tempDiv.id = "Row " + i;
         for (let j = 0; j < boardX; j++) {
             let tempBox = document.createElement("input");
             tempBox.type = "checkbox";
             tempBox.id = i + "," + j;
             tempBox.checked = boardArray[i][j];
+            if (tempBox.checked) {
+                tempBox.className = "gol__board__box--checked";
+            } else {
+                tempBox.className = "gol__board__box--unchecked";
+            }
             tempBox.style.width = blockSize + "px";
             tempBox.style.height = blockSize + "px";
             tempBox.addEventListener("change", () => {
@@ -62,7 +67,12 @@ function makeCheckArray() {
                 let x = id[0];
                 let y = id[1];
                 boardArray[x][y] = tempBox.checked;
-                console.log(tempBox.checked);
+                if (tempBox.checked) {
+                    tempBox.className = "gol__board__box--checked";
+                } else {
+                    tempBox.className = "gol__board__box--unchecked";
+                }
+                //console.log(tempBox.checked);
             })
             checkboxArray[i][j] = tempBox;
             tempDiv.appendChild(tempBox);
@@ -73,7 +83,7 @@ function makeCheckArray() {
 
 function makeButtons() {
     let buttonDiv = document.createElement("div");
-    buttonDiv.className = "buttonDiv";
+    buttonDiv.className = "gol__button-div";
     div.appendChild(buttonDiv);
     let advance = document.createElement("button");
     advance.innerHTML = "Next Generation";
@@ -104,7 +114,7 @@ function setBlockSize() {
     } else {
         blockSize = clientX / 32;
     }
-    console.log(clientX > clientY * 1.33);
+    //console.log(clientX > clientY * 1.33);
 }
 
 
@@ -137,7 +147,7 @@ function runGen() {
                     if (boardArray[i + 1][j + 1] == 1) squaresAround++;
                 }
             }
-            console.log(squaresAround);
+            //console.log(squaresAround);
             tempArray[i][j] = squaresAround;
         }
     }
@@ -164,6 +174,11 @@ function changeBoxes() {
             //console.log(boardArray[i][j]);
             let currentBox = checkboxArray[i][j];
             currentBox.checked = boardArray[i][j];
+            if (currentBox.checked) {
+                currentBox.className = "gol__board__box--checked";
+            } else {
+                currentBox.className = "gol__board__box--unchecked";
+            }
         }
     }
 }
@@ -190,11 +205,27 @@ function playGameOfLife(tempdiv) {
                 checkboxArray[i][j].style.height = blockSize + "px";
             }
         }
-        console.log(window.innerWidth);
+        //console.log(window.innerWidth);
     });
 
     setBlockSize();
     randomizeBoard();
     makeCheckArray();
     makeButtons();
+}
+
+function gameOfLife() {
+    let height = 455;
+    let width = 600;
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        height = 630;
+        width = 400;
+    }
+    let lifeWindow = makeWindow(10, 30, height, width, "Game Of Life");
+    let tempDiv = document.createElement("div");
+    tempDiv.className = "gol";
+    tempDiv.style.height = height - 22 + "px";
+    tempDiv.style.width = width + "px";
+    lifeWindow.appendChild(tempDiv);
+    playGameOfLife(tempDiv);
 }
