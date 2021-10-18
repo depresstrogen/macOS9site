@@ -329,3 +329,13 @@ INPUT[type=checkbox]:checked {
     position: absolute;
     margin-top: -40px;
 }
+
+.mac-button {
+    font-family: Chicago Light;
+}
+
+.qt-fileselect {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}

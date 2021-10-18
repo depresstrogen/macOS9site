@@ -147,7 +147,7 @@ function gameOfLife() {
 }
 
 function quicktime() {
-    let height = 535;
+    let height = 200;
     let width = 760;
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         height = 480;
