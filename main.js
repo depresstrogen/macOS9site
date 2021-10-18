@@ -66,6 +66,13 @@ function VM() {
 
 }
 
+function calc() {
+    let calcWindow = makeWindow(400, 400, 169, 106, "Calculator");
+    let calcDiv = document.createElement("div");
+    calcWindow.appendChild(calcDiv);
+    runCalc(calcWindow);
+}
+
 
 function icons(icon) {
     if (icon == "blank") makeWindow(100, 100, 300, 400, "Blank Window");
@@ -78,6 +85,7 @@ function icons(icon) {
 }
 
 OOB();
+calc();
 // Check for OOB 10 times a second
 setInterval(function() {
     updateTime();
