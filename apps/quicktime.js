@@ -1,34 +1,28 @@
-let quickdiv = document.createElement("div");
-
 function playQuicktime(div) {
 
-    quickdiv = this.div;
     let video = document.createElement("video");
     video.src = "vfs/videos/sandwick.mp4";
     video.className = "quicktime-video";
 
+    let headerHeight = 22;
+    let footerHeight = 91;
+
+    div.parentNode.style.height = (headerHeight + 400 + footerHeight) + "px";
+    div.style.height = (400 + footerHeight) + "px";
+
+
     if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        video.style.maxHeight = "600px";
+        video.style.maxHeight = "400px";
         video.style.maxWidth = "400px";
         video.style.minHeight = "0px";
         video.style.minWidth = "400px";
+
+        let height = 400;
+        div.parentNode.style.height = (headerHeight + height + footerHeight) + "px";
+        div.style.height = (height + footerHeight) + "px";
     }
 
     div.appendChild(video);
-
-    let fileButton = document.createElement("button");
-    fileButton.innerHTML = "Select File";
-    div.appendChild(fileButton);
-    fileButton.addEventListener("click", () => {
-        let filewin = makeWindow(0, 0, 300, 400, "Videos");
-
-        let videoList = ["vfs/videos/sandwick.mp4", "vfs/videos/cage.mp4", "vfs/videos/lobster.mp4", "vfs/videos/diamonds.mp4", "vfs/videos/copyright_infringement.mp4", "vfs/videos/assbefat.mp4"];
-
-        fileSelect(videoList, filewin, video);
-
-    });
-
-
 
     let timerDiv = document.createElement("div");
     timerDiv.className = "timer-div";
@@ -41,7 +35,9 @@ function playQuicktime(div) {
     timerDiv.style.left = 10 + "px";
     div.appendChild(timerDiv);
     video.addEventListener('timeupdate', updateCountdown);
-
+    video.addEventListener("loadedmetadata", function(e) {
+        console.log(video.videoWidth + " " + video.videoHeight);
+    }, false);
 
     let playtimeDiv = document.createElement("div");
     playtimeDiv.className = "qt-playtimediv";
@@ -75,10 +71,12 @@ function playQuicktime(div) {
     playButton.className = "qt-playbutton";
     playbuttonDiv.appendChild(playButton);
     playButton.addEventListener("click", () => {
-        if (video.paused)
+        if (video.paused) {
             video.play();
-        else
+            console.log(" AAA" + video.videoHeight);
+        } else {
             video.pause();
+        }
     })
 
     let footerImgWidth = 197;
@@ -109,6 +107,19 @@ function playQuicktime(div) {
         qtExtendImg.style.left = footerX + "px";
         qtFooterDiv.appendChild(qtExtendImg);
     }
+
+    let fileButton = document.createElement("button");
+    fileButton.innerHTML = "Select File";
+    fileButton.className = "qt-fileselect mac-button"
+    qtFooterDiv.appendChild(fileButton);
+    fileButton.addEventListener("click", () => {
+        let filewin = makeWindow(0, 0, 300, 400, "Videos");
+
+        let videoList = ["vfs/videos/sandwick.mp4", "vfs/videos/cage.mp4", "vfs/videos/lobster.mp4", "vfs/videos/diamonds.mp4", "vfs/videos/copyright_infringement.mp4", "vfs/videos/assbefat.mp4"];
+
+        fileSelect(videoList, filewin, video);
+
+    });
 
     function secMinHour(seconds) {
         sec_num = seconds;
