@@ -1,16 +1,26 @@
 @font-face {
-    src: url(charcoal.ttf) format("truetype");
+    src: url(fonts/charcoal.ttf) format("truetype");
     font-family: Charcoal;
 }
 
 @font-face {
-    src: url(chicago.ttf) format("truetype");
+    src: url(fonts/chicago.ttf) format("truetype");
     font-family: Chicago;
 }
 
 @font-face {
-    src: url(chicagolight.ttf) format("truetype");
+    src: url(fonts/chicagolight.ttf) format("truetype");
     font-family: Chicago Light;
+}
+
+@font-face {
+    src: url(fonts/genevaregular.ttf) format("truetype");
+    font-family: Geneva;
+}
+
+@font-face {
+    src: url(fonts/monaco.ttf) format("truetype");
+    font-family: Monaco;
 }
 
 header {
@@ -172,7 +182,7 @@ body {
 .desktop-icon-text {
     position: absolute;
     top: 24px;
-    font-family: Chicago Light;
+    font-family: Geneva;
     font-weight: 100;
     font-size: 12px;
     padding: 2px;
@@ -247,6 +257,9 @@ INPUT[type=checkbox]:checked {
 
 .timer-div {
     position: absolute;
+    height: 19px;
+    border-radius: 5px;
+    border: 2px solid #C0C0C0;
     background-color: rgb(239, 247, 222);
 }
 
@@ -255,7 +268,64 @@ INPUT[type=checkbox]:checked {
 }
 
 .playtime {
+    font-family: Monaco;
+    font-size: 12px;
     display: inline;
     padding-right: 10px;
     padding: 5px;
+}
+
+.qt-spacers {
+    padding: 1px;
+}
+
+.qt-bardiv {
+    display: inline;
+}
+
+.qt-playtimediv {
+    display: inline;
+}
+
+.qt-spacerdiv {
+    display: inline;
+    position: absolute;
+    padding-left: 5px;
+    top: 2px;
+}
+
+.qt-playbutton {
+    background: url(qtplaybutton.png) no-repeat;
+    background-size: 48px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    border: none;
+}
+
+.qt-playbuttondiv {
+    display: block;
+    position: absolute;
+    padding-top: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.qt-footerdiv {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: -6px;
+}
+
+.qt-footerimg {
+    display: inline;
+    position: absolute;
+    top: -41px;
+}
+
+.qt-footerextend {
+    display: inline;
+    position: absolute;
+    margin-top: -40px;
 }

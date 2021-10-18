@@ -15,15 +15,6 @@ function playQuicktime(div) {
     }
 
     div.appendChild(video);
-    let playButton = document.createElement("button");
-    playButton.innerHTML = "Play";
-    div.appendChild(playButton);
-    playButton.addEventListener("click", () => {
-        if (video.paused)
-            video.play();
-        else
-            video.pause();
-    })
 
     let fileButton = document.createElement("button");
     fileButton.innerHTML = "Select File";
@@ -41,18 +32,83 @@ function playQuicktime(div) {
 
     let timerDiv = document.createElement("div");
     timerDiv.className = "timer-div";
-    timerDiv.style.width = (div.style.width.substring(0, div.style.width.length - 2) - 20) + "px";
-    timerDiv.style.height = 23 + "px";
+    let divWidth = div.style.width.substring(0, div.style.width.length - 2);
+    let timerWidth = (divWidth - 20);
+    timerDiv.style.width = timerWidth + "px";
+
+
+
     timerDiv.style.left = 10 + "px";
     div.appendChild(timerDiv);
     video.addEventListener('timeupdate', updateCountdown);
+
+
+    let playtimeDiv = document.createElement("div");
+    playtimeDiv.className = "qt-playtimediv";
+    timerDiv.appendChild(playtimeDiv);
     let playtime = document.createElement("p");
     playtime.innerHTML = "00:00:00";
     playtime.className = "playtime";
-    timerDiv.appendChild(playtime)
+    playtimeDiv.appendChild(playtime);
 
-    let playbar = makePlaybar(0, 0, 400);
-    timerDiv.appendChild(playbar);
+    let playBarWidth = timerWidth - (84) - (7 * 8) - 6;
+    let barDiv = document.createElement("div");
+    barDiv.className = "qt-bardiv";
+    timerDiv.appendChild(barDiv);
+    let playbar = makePlaybar(0, 0, playBarWidth);
+    barDiv.appendChild(playbar);
+
+    let spacerDiv = document.createElement("div");
+    spacerDiv.className = "qt-spacerdiv";
+    timerDiv.appendChild(spacerDiv);
+    for (let i = 0; i < 8; i++) {
+        let spacers = document.createElement("img");
+        spacers.src = "qtspacers.png";
+        spacers.className = "qt-spacers";
+        spacerDiv.appendChild(spacers);
+    }
+
+    let playbuttonDiv = document.createElement("div");
+    playbuttonDiv.className = "qt-playbuttondiv";
+    div.appendChild(playbuttonDiv);
+    let playButton = document.createElement("button");
+    playButton.className = "qt-playbutton";
+    playbuttonDiv.appendChild(playButton);
+    playButton.addEventListener("click", () => {
+        if (video.paused)
+            video.play();
+        else
+            video.pause();
+    })
+
+    let footerImgWidth = 197;
+    let footerX = 0;
+    let qtFooterDiv = document.createElement("div");
+    qtFooterDiv.className = "qt-footerdiv";
+    div.appendChild(qtFooterDiv);
+    for (; footerX < divWidth / 2 - (footerImgWidth / 2) - 5; footerX++) {
+        let qtExtendImg = document.createElement("img");
+        qtExtendImg.src = "qtfooterline.png";
+        qtExtendImg.className = "qt-footerextend";
+        qtExtendImg.style.left = footerX + "px";
+        qtFooterDiv.appendChild(qtExtendImg);
+    }
+
+    let qtFooterImg = document.createElement("img");
+    qtFooterImg.className = "qt-footerimg";
+    qtFooterImg.src = "qtfooter.png";
+    qtFooterImg.style.left = footerX + "px";
+    qtFooterDiv.appendChild(qtFooterImg);
+
+    footerX += footerImgWidth;
+
+    for (; footerX < divWidth; footerX++) {
+        let qtExtendImg = document.createElement("img");
+        qtExtendImg.src = "qtfooterline.png";
+        qtExtendImg.className = "qt-footerextend";
+        qtExtendImg.style.left = footerX + "px";
+        qtFooterDiv.appendChild(qtExtendImg);
+    }
 
     function secMinHour(seconds) {
         sec_num = seconds;
@@ -72,9 +128,9 @@ function playQuicktime(div) {
         let playtime = document.createElement("p");
         playtime.innerHTML = secMinHour(Math.floor(video.currentTime));
         playtime.className = "playtime";
-        timerDiv.appendChild(playtime);
+        playtimeDiv.appendChild(playtime);
 
-        timerDiv.appendChild(makePlaybar(video.currentTime, video.duration, 400));
+        barDiv.appendChild(makePlaybar(video.currentTime, video.duration, playBarWidth));
     }
     console.log("speed");
 
