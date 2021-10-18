@@ -209,17 +209,17 @@ function makeWindow(x, y, height, width, name) {
     // All positioning is done in the css file
     let closeButton = document.createElement("img");
     closeButton.className = "window__titlebar__close-button";
-    closeButton.src = "close.png";
+    closeButton.src = "img/os/close.png";
     windowTitle.appendChild(closeButton);
 
     let minButton = document.createElement("img");
     minButton.className = "window__titlebar__min-button";
-    minButton.src = "minimize.png";
+    minButton.src = "img/os/minimize.png";
     windowTitle.appendChild(minButton);
 
     let maxButton = document.createElement("img");
     maxButton.className = "window__titlebar__max-button";
-    maxButton.src = "maximize.png";
+    maxButton.src = "img/os/maximize.png";
     windowTitle.appendChild(maxButton);
 
     let nameTag = document.createElement("div");
