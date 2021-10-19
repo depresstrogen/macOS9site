@@ -1,4 +1,4 @@
-function runCalc (window) {
+function runCalc(window) {
     let maxButton = window.querySelector(".window__titlebar__max-button");
     maxButton.remove();
     let minButton = window.querySelector(".window__titlebar__min-button");
@@ -10,11 +10,18 @@ function runCalc (window) {
     let buttonDiv = document.createElement("div");
     buttonDiv.className = "calc__button__div"
     window.appendChild(buttonDiv);
-    for(let i = 0; i < buttons.length; i++) {
+    for (let i = 0; i < buttons.length; i++) {
         let button = document.createElement("button");
         button.className = "calc__button";
         button.innerHTML = buttons[i];
         buttonDiv.appendChild(button);
     }
 
+}
+
+function calc() {
+    let calcWindow = makeWindow(400, 400, 169, 106, "Calculator");
+    let calcDiv = document.createElement("div");
+    calcWindow.appendChild(calcDiv);
+    runCalc(calcWindow);
 }

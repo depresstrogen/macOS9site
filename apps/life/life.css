@@ -1,0 +1,39 @@
+.gol__board__box--unchecked {
+    background-color: #DDD;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 3%;
+    height: 3%;
+    cursor: pointer;
+    position: relative;
+    margin: 0px;
+    margin-bottom: -0.45%;
+    border-radius: 0px;
+    border-color: black;
+    background: transparent url(../../img/os/buttonunclicked.png) center top;
+    background-size: cover;
+    border: 1px solid;
+}
+
+.gol__board__box--checked {
+    background-color: #DDD;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 3%;
+    height: 3%;
+    cursor: pointer;
+    position: relative;
+    margin: 0px;
+    margin-bottom: -0.45%;
+    border-radius: 0px;
+    border-color: black;
+    background: transparent url(../../img/os/buttonclicked.png) center top;
+    background-size: cover;
+    border: 1px solid;
+}
+
+.gol {
+    margin: auto;
+}

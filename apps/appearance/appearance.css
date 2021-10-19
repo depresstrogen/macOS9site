@@ -1,0 +1,24 @@
+.appearance_selector {
+    position: absolute;
+    width: 200px;
+    height: 130px;
+    right: 20px;
+    top: 86px;
+    font-family: Chicago Light;
+    border: 3px solid;
+    border-color: rgb(102, 102, 204);
+    border-radius: 0.25em;
+}
+
+.appearance_apply {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-family: Chicago Light;
+}
+
+.appearance__preview {
+    position: absolute;
+    left: 35px;
+    top: 77px;
+}

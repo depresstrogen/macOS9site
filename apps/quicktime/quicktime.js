@@ -59,7 +59,7 @@ function playQuicktime(div) {
     timerDiv.appendChild(spacerDiv);
     for (let i = 0; i < 8; i++) {
         let spacers = document.createElement("img");
-        spacers.src = "img/quicktime/qtspacers.png";
+        spacers.src = "apps/quicktime/img/qtspacers.png";
         spacers.className = "qt__time__spacers";
         spacerDiv.appendChild(spacers);
     }
@@ -87,7 +87,7 @@ function playQuicktime(div) {
     div.appendChild(qtFooterDiv);
     for (; footerX < divWidth / 2 - (footerImgWidth / 2) - 5; footerX++) {
         let qtExtendImg = document.createElement("img");
-        qtExtendImg.src = "img/quicktime/qtfooterline.png";
+        qtExtendImg.src = "apps/quicktime/img/qtfooterline.png";
         qtExtendImg.className = "qt__footer__img--extend";
         qtExtendImg.style.left = footerX + "px";
         qtFooterDiv.appendChild(qtExtendImg);
@@ -95,7 +95,7 @@ function playQuicktime(div) {
 
     let qtFooterImg = document.createElement("img");
     qtFooterImg.className = "qt__footer__img";
-    qtFooterImg.src = "img/quicktime/qtfooter.png";
+    qtFooterImg.src = "apps/quicktime/img/qtfooter.png";
     qtFooterImg.style.left = footerX + "px";
     qtFooterDiv.appendChild(qtFooterImg);
 
@@ -103,7 +103,7 @@ function playQuicktime(div) {
 
     for (; footerX < divWidth; footerX++) {
         let qtExtendImg = document.createElement("img");
-        qtExtendImg.src = "img/quicktime/qtfooterline.png";
+        qtExtendImg.src = "apps/quicktime/img/qtfooterline.png";
         qtExtendImg.className = "qt__footer__img--extend";
         qtExtendImg.style.left = footerX + "px";
         qtFooterDiv.appendChild(qtExtendImg);

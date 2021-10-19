@@ -1,0 +1,24 @@
+@font-face {
+    src: url(../fonts/charcoal.ttf) format("truetype");
+    font-family: Charcoal;
+}
+
+@font-face {
+    src: url(../fonts/chicago.ttf) format("truetype");
+    font-family: Chicago;
+}
+
+@font-face {
+    src: url(../fonts/chicagolight.ttf) format("truetype");
+    font-family: Chicago Light;
+}
+
+@font-face {
+    src: url(../fonts/genevaregular.ttf) format("truetype");
+    font-family: Geneva;
+}
+
+@font-face {
+    src: url(../fonts/monaco.ttf) format("truetype");
+    font-family: Monaco;
+}
