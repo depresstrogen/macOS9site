@@ -15,6 +15,7 @@ function dragElement(elmnt) {
 
     // Allows drag() to only run if active
     let active = false;
+    let activeElem = null;
 
     // Variables to keep between instances of drag();
     let currentX;
@@ -52,8 +53,8 @@ function dragElement(elmnt) {
 
 
         // Remove and append to bring window to front
-        elmnt.remove();
-        document.body.appendChild(elmnt);
+        //elmnt.remove();
+        //document.body.appendChild(elmnt);
         // Set to be active
         active = true;
 

@@ -28,15 +28,16 @@ window.addEventListener('resize', function(event) {
 }, true);
 
 function icons(icon) {
-    if (icon == "blank") makeWindow(100, 100, 300, 400, "Blank Window");
+    if (icon == "website") websiteRun();
     if (icon == "lobster") lobsterRun();
-    if (icon == "penith") penithRun();
-    if (icon == "VM") VM();
+    if (icon == "VM") VM()    
     if (icon == "Appearance") appearance();
     if (icon == "GameLife") gameOfLife();
     if (icon == "quicktime") quicktime();
 }
 
 OOB();
+
+websiteRun();
 //calc();
 // Check for OOB 10 times a second

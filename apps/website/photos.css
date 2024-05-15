@@ -1,0 +1,57 @@
+@font-face {
+    src: url(../../fonts/genevaregular.ttf) format("truetype");
+    font-family: Geneva;
+}
+
+head {
+    display: inline;
+}
+
+body {
+    background-color: white;
+}
+
+h1, h3, p {
+    font-family: Geneva;
+}
+
+a.headerbutton {
+    padding: 1px 6px;
+    border: 1px outset 3px;
+    border-radius: 3px;
+    color: white;
+    background-color: violet;
+    font-size: 20px;
+    font-family: Geneva;
+    text-decoration: none;
+    display: inline;
+    float: right;
+    margin-left: 10px;
+}
+
+a.photoheaderbutton{
+    padding: 1px 6px;
+    border: 1px outset 3px;
+    border-radius: 3px;
+    color: white;
+    background-color: violet;
+    font-size: 20px;
+    font-family: Geneva;
+    text-decoration: none;
+    display: inline;
+    float: right;
+    margin-left: 10px;
+}
+
+img {
+
+    width: 30%
+
+}
+#header {
+    display: inline;
+}
+
+#photoheader {
+    display: inline;
+}
